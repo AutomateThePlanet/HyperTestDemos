@@ -1,0 +1,27 @@
+---
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+
+runson: win
+
+autosplit: true
+retryOnFailure: true
+
+maxRetries: 5
+concurrency: 11
+
+mergeArtifacts: true
+
+project: HyperTestDemos.sln
+
+pre:
+  - nuget locals all -clear
+
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -nri 'class' HyperTestDemo -ir --include=\*.cs --exclude=DriverFactory.cs | sed 's/:.*//'
+
+testRunnerCommand: dotnet test $project --filter "(Name~$test)"
