@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-[assembly: Parallelizable(ParallelScope.Self)]
+[assembly: Parallelizable(ParallelScope.All)]
 [assembly: LevelOfParallelism(10)]
 
 namespace HyperTestDemo
